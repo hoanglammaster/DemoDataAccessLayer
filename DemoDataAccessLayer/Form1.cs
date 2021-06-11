@@ -38,9 +38,19 @@ namespace DemoDataAccessLayer
             ProductBLL productBLL = new ProductBLL();
             List<Product> listProduct = productBLL.GetListProductByCategoryID(categoryID);
             listView1.Items.Clear();
-            foreach(Product product in listProduct)
+            listView1.View = View.Details;
+            listView1.FullRowSelect = true;
+            listView1.Columns.Add("ID", -2, HorizontalAlignment.Left);
+            listView1.Columns.Add("Name", -2, HorizontalAlignment.Left);
+            listView1.Columns.Add("Quantity Per Unit", -2, HorizontalAlignment.Left);
+            listView1.Columns.Add("Unit Price", -2, HorizontalAlignment.Center);
+            foreach (Product product in listProduct)
             {
-                listView1.Items.Add(product.ProductName);
+                ListViewItem viewItem = new ListViewItem(product.ProductID.ToString());
+                viewItem.SubItems.Add(product.ProductName);
+                viewItem.SubItems.Add(product.QuantityPerUnit);
+                viewItem.SubItems.Add(product.UnitPrice.ToString());
+                listView1.Items.Add(viewItem);
             }
         }
         private void loadProductToComboBox(int categoryID)
@@ -60,7 +70,7 @@ namespace DemoDataAccessLayer
 
         private void listView1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(listView1.SelectedItems[0].ToString());
+           //MessageBox.Show(listView1.SelectedItems[0].ToString());
         }
 
         private void comboBox2_Click(object sender, EventArgs e)

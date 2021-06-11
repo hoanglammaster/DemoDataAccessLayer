@@ -62,7 +62,7 @@ namespace DemoDataAccessLayer
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(268, 77);
+            this.listView1.Location = new System.Drawing.Point(265, 77);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(247, 336);
             this.listView1.TabIndex = 2;
